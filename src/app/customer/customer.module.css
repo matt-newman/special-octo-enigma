@@ -83,29 +83,35 @@
 
 /* Tablet / Desktop */
 @media (min-width: 920px) {
+    .main {
+        display: block;
+    }
+
     .center {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 2fr;
         grid-template-rows: repeat(12, 1fr);
         grid-gap: 0 2em;
-        text-align: left;
+        max-width: 1200px;
+        margin: 0 auto;
         position: relative;
-        align-items: center;
-        justify-items: left;
+        text-align: left;
     }
 
     .avatar {
         border-radius: 5px;
-        grid-row-start: 1;
         grid-row-end: span 12;
-        justify-self: flex-end;
-        align-self: start;
+        justify-self: end;
         max-width: 25em;
     }
 
     .header {
         grid-row-start: span 2;
         align-self: end;
+    }
+
+    .buttons {
+        display: block;
     }
 
     .gift {
