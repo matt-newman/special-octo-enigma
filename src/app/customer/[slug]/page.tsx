@@ -19,9 +19,12 @@ export default function Customer({ params }: { params: { slug: string } }) {
 
   console.log({ params });
 
-  // fetch customer
+  // TODO:
 
   // route to 404 if none
+  // no eligable cats
+
+  // tests
 
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>
@@ -66,7 +69,6 @@ export default function Customer({ params }: { params: { slug: string } }) {
 
           <a
             href="#delivery"
-            // className={styles.button}
             target="_blank"
             rel="noopener noreferrer"
           >
