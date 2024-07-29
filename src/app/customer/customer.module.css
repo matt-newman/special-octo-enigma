@@ -3,8 +3,34 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 6rem;
+    padding: 2rem;
     min-height: 100vh;
+}
+
+.center {
+    text-align: center;
+}
+
+.avatar {
+    border-radius: 50%;
+    margin-bottom: 1em;
+}
+
+.header {
+    color: green;
+    font-size: 1.3rem;
+    margin-bottom: 1em;
+}
+
+.description {
+    color: #666;
+    margin-bottom: 1em;
+}
+
+.price {
+    color: #444;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .grid a {
@@ -26,10 +52,6 @@
         margin-bottom: 120px;
         max-width: 320px;
         text-align: center;
-    }
-
-    .center {
-        padding: 8rem 0 6rem;
     }
 
     .center::before {
