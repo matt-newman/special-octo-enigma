@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import useSWR, { Fetcher } from 'swr';
+import useSWR from 'swr';
 
 import catImage from '../../../../public/cat-image.png';
 import styles from "../customer.module.css";
@@ -17,14 +17,14 @@ export default function Customer({ params }: { params: { slug: string } }) {
   const customerId = params.slug;
   const { data, error } = useSWR<any>(`${apiUrl}/${customerId}`, fetcher);
 
-  console.log({ params });
-
   // TODO:
 
   // route to 404 if none
   // no eligable cats
 
   // tests
+  // http://localhost:3001/customer/3dfdc5cf-b8ed-40f7-a5ca-5e88ad103b60
+  // http://localhost:3001/customer/ff535484-6880-4653-b06e-89983ecf4ed5
 
   const simpleContentWrapper = (content:string) => {
     return (
