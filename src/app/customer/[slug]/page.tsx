@@ -3,6 +3,7 @@
 import Image from "next/image";
 import useSWR, { Fetcher } from 'swr';
 
+import catImage from '../../../../public/cat-image.png';
 import styles from "../customer.module.css";
 
 const API_ROOT = 'http://localhost:3000/';
@@ -15,8 +16,8 @@ export default function Customer({ params }: { params: { slug: string } }) {
   const apiUrl = `${API_ROOT}${DELIVERY_API_PATH}`;
   const customerId = params.slug;
   const { data, error } = useSWR<any>(`${apiUrl}/${customerId}`, fetcher);
-  
-  console.log( {params} );
+
+  console.log({ params });
 
   // fetch customer
 
@@ -31,11 +32,15 @@ export default function Customer({ params }: { params: { slug: string } }) {
       {/* probably not needed, use main to center */}
       <div className={styles.center}>
         <Image
+          // do source and sizes for perf optimisation
           className={styles.avatar}
-          src="/cat-image.png"
+          src={catImage}
           alt="A handsome kitty"
-          width={50}
-          height={50}
+          sizes="100vw"
+          style={{
+            width: '100%',
+            height: 'auto',
+          }}
           priority
         />
 
@@ -47,7 +52,7 @@ export default function Customer({ params }: { params: { slug: string } }) {
           {data.message}
         </div>
 
-        <h2 className={styles.price}>Total price £{ (data.totalPrice).toFixed(2) }</h2>
+        <h2 className={styles.price}>Total price £{(data.totalPrice).toFixed(2)}</h2>
 
         <div className={styles.buttons}>
           <a

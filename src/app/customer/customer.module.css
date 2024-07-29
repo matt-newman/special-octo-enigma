@@ -14,6 +14,7 @@
 .avatar {
     border-radius: 50%;
     margin-bottom: 1em;
+    max-width: 7em;
 }
 
 .header {
@@ -70,15 +71,47 @@
     transform: rotate(-5deg);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 500px) {
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
     .buttons .buttonGreen {
         margin-right: 0;
     }
 }
 
 /* Tablet / Desktop */
-@media (max-width: 920px) {
-    .buttons {
-        /* background-color: grey; */
+@media (min-width: 920px) {
+    .center {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(12, 1fr);
+        grid-gap: 0 2em;
+        text-align: left;
+        position: relative;
+        align-items: center;
+        justify-items: left;
+    }
+
+    .avatar {
+        border-radius: 5px;
+        grid-row-start: 1;
+        grid-row-end: span 12;
+        justify-self: flex-end;
+        align-self: start;
+        max-width: 25em;
+    }
+
+    .header {
+        grid-row-start: span 2;
+        align-self: end;
+    }
+
+    .gift {
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: rotate(5deg);
     }
 }
