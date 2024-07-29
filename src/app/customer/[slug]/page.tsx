@@ -26,8 +26,18 @@ export default function Customer({ params }: { params: { slug: string } }) {
 
   // tests
 
-  if (error) return <div>Failed to load</div>
-  if (!data) return <div>Loading...</div>
+  const simpleContentWrapper = (content:string) => {
+    return (
+      <main className={styles.main}>
+        <div className={styles.center}>
+          {content}
+        </div>
+      </main>
+    )
+  };
+
+  if (error) return simpleContentWrapper('Failed to load!')
+  if (!data) return simpleContentWrapper('Loading...')
 
   return (
     <main className={styles.main}>
