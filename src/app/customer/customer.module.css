@@ -31,38 +31,54 @@
     color: #444;
     font-size: 1.1rem;
     font-weight: 500;
+    margin-bottom: 2em;
 }
 
-.grid a {
+.buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.buttons a {
     border: solid 1px green;
     border-radius: 5px;
+    color: green;
+    font-size: 0.8em;
+    margin-bottom: 1em;
+    padding: 0.75em 3em;
+    max-width: 25em;
     text-transform: uppercase;
-    padding: 10px 30px;
 }
 
-.grid .buttonGreen {
+.buttons .buttonGreen {
     background-color: green;
     color: white;
+    margin-right: 2em;
 }
 
-/* Mobile */
+.gift {
+    background-color: pink;
+    color: purple;
+    font-weight: bold;
+    padding: 0.25em 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 8em;
+    text-transform: uppercase;
+    transform: rotate(-5deg);
+}
+
 @media (max-width: 700px) {
-    .grid {
-        grid-template-columns: 1fr;
-        margin-bottom: 120px;
-        max-width: 320px;
-        text-align: center;
-    }
-
-    .center::before {
-        transform: none;
-        height: 300px;
+    .buttons .buttonGreen {
+        margin-right: 0;
     }
 }
 
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-    .grid {
-        grid-template-columns: repeat(2, 50%);
+/* Tablet / Desktop */
+@media (max-width: 920px) {
+    .buttons {
+        /* background-color: grey; */
     }
 }

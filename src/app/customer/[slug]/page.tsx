@@ -11,10 +11,12 @@ const DELIVERY_API_PATH = 'comms/your-next-delivery';
 // TODO: in full applicaton, this would be moved to a util folder
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-export default function Customer({ params }: { params: { id: string } }) {
+export default function Customer({ params }: { params: { slug: string } }) {
   const apiUrl = `${API_ROOT}${DELIVERY_API_PATH}`;
-  const customerId = params.id;
+  const customerId = params.slug;
   const { data, error } = useSWR<any>(`${apiUrl}/${customerId}`, fetcher);
+  
+  console.log( {params} );
 
   // fetch customer
 
@@ -38,40 +40,39 @@ export default function Customer({ params }: { params: { id: string } }) {
         />
 
         <h1 className={styles.header}>
-          { data.title }
+          {data.title}
         </h1>
 
         <div className={styles.description}>
-          { data.message }
+          {data.message}
         </div>
 
-        <h2 className={styles.price}>Total price £{data.totalPrice}</h2>
+        <h2 className={styles.price}>Total price £{ (data.totalPrice).toFixed(2) }</h2>
+
+        <div className={styles.buttons}>
+          <a
+            href="#details"
+            className={styles.buttonGreen}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            See details
+          </a>
+
+          <a
+            href="#delivery"
+            // className={styles.button}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Edit delivery
+          </a>
+        </div>
+
+        <div className={styles.gift}>
+          Free gift
+        </div>
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="#details"
-          className={styles.buttonGreen}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          See details
-        </a>
-
-        <a
-          href="#delivery"
-          // className={styles.button}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Edit delivery
-        </a>
-      </div>
-
-      <div className={styles.center}>
-        Free gift
-      </div>
-
     </main>
   );
 }
