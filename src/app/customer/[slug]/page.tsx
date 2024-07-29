@@ -73,10 +73,12 @@ export default function Customer({ params }: { params: { slug: string } }) {
             Edit delivery
           </a>
         </div>
-
-        <div className={styles.gift}>
-          Free gift
-        </div>
+        
+        {data.freeGift &&
+          <div className={styles.gift}>
+            Free gift
+          </div>
+        }
       </div>
     </main>
   );
