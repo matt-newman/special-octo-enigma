@@ -26,7 +26,7 @@ export default function Customer({ params }: { params: { slug: string } }) {
   // http://localhost:3001/customer/3dfdc5cf-b8ed-40f7-a5ca-5e88ad103b60
   // http://localhost:3001/customer/ff535484-6880-4653-b06e-89983ecf4ed5
 
-  const simpleContentWrapper = (content:string) => {
+  const simpleContentWrapper = (content: string) => {
     return (
       <main className={styles.main}>
         <div className={styles.center}>
@@ -57,40 +57,42 @@ export default function Customer({ params }: { params: { slug: string } }) {
           priority
         />
 
-        <h1 className={styles.header}>
-          {data.title}
-        </h1>
+        <div className={styles.content}>
+          <h1 className={styles.header}>
+            {data.title}
+          </h1>
 
-        <div className={styles.description}>
-          {data.message}
-        </div>
-
-        <h2 className={styles.price}>Total price £{(data.totalPrice).toFixed(2)}</h2>
-
-        <div className={styles.buttons}>
-          <a
-            href="#details"
-            className={styles.buttonGreen}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            See details
-          </a>
-
-          <a
-            href="#delivery"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Edit delivery
-          </a>
-        </div>
-        
-        {data.freeGift &&
-          <div className={styles.gift}>
-            Free gift
+          <div className={styles.description}>
+            {data.message}
           </div>
-        }
+
+          <h2 className={styles.price}>Total price £{(data.totalPrice).toFixed(2)}</h2>
+
+          <div className={styles.buttons}>
+            <a
+              href="#details"
+              className={styles.buttonGreen}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              See details
+            </a>
+
+            <a
+              href="#delivery"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Edit delivery
+            </a>
+          </div>
+
+          {data.freeGift &&
+            <div className={styles.gift}>
+              Free gift
+            </div>
+          }
+        </div>
       </div>
     </main>
   );
