@@ -10,12 +10,23 @@ const API_ROOT = 'http://localhost:3000/';
 const DELIVERY_API_PATH = 'comms/your-next-delivery';
 
 // TODO: in full applicaton, this would be moved to a util folder
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+const fetcher = async (url:string) => {
+  const res = await fetch(url);
+ 
+  // If the status code is not in the range 200-299,
+  // we still try to parse and throw it.
+  if (!res.ok) {
+    const error = new Error('An error occurred while fetching the data.');
+    throw error;
+  }
+ 
+  return res.json()
+}
 
 export default function Customer({ params }: { params: { slug: string } }) {
   const apiUrl = `${API_ROOT}${DELIVERY_API_PATH}`;
   const customerId = params.slug;
-  const { data, error } = useSWR<any>(`${apiUrl}/${customerId}`, fetcher);
+  const { data, error, isLoading } = useSWR<any>(`${apiUrl}/${customerId}`, fetcher);
 
   // TODO:
 
@@ -36,8 +47,8 @@ export default function Customer({ params }: { params: { slug: string } }) {
     )
   };
 
-  if (error) return simpleContentWrapper('Failed to load!')
-  if (!data) return simpleContentWrapper('Loading...')
+  if (isLoading) return simpleContentWrapper('Loading...')
+  if (error) return simpleContentWrapper(error.message)
 
   return (
     <main className={styles.main}>
