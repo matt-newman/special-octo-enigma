@@ -18,12 +18,12 @@
 
 .avatar {
     border-radius: 50%;
-    margin-bottom: 1em;
     max-width: 5em;
     transform: translateY(-3.5em);
 }
 
 .content {
+    margin-top: -2em;
     padding-left: 1em;
     padding-right: 1em;
 }
@@ -86,13 +86,16 @@
         border-radius: 5px;
         grid-row-end: span 12;
         justify-self: end;
-        margin-bottom: 0;
         max-width: 25em;
         transform: none;
     }
 
     .header {
         margin-top: 2em;
+    }
+
+    .content {
+        margin-top: 0;
     }
 
     .buttons {
