@@ -2,15 +2,18 @@ import { notFound } from 'next/navigation';
 import { CustomerCard } from '../delivery/Card';
 import { fetcher } from '../../../utils';
 
-import styles from "../customer.module.css";
-
 const API_ROOT = 'http://localhost:3000/';
 const DELIVERY_API_PATH = 'comms/your-next-delivery';
 const apiUrl = `${API_ROOT}${DELIVERY_API_PATH}`;
 
+type CustomerRequestParams = {
+  params: {
+    slug: string;
+  }
+}
 
-export default async function Customer({ params }: { params: { slug: string } }) {
-  const customerId = params.slug;
+export default async function Customer( req: CustomerRequestParams ) {
+  const customerId = req.params.slug;
   const { data, status } = await fetcher(`${apiUrl}/${customerId}`);
   const { title, message, totalPrice, freeGift } = data;
 
