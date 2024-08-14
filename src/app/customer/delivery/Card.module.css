@@ -1,4 +1,4 @@
-.main {
+.wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -8,7 +8,7 @@
     margin-top: 2em;
 }
 
-.center {
+.card {
     background-color: white;
     border: solid 1px #ccc;
     border-radius: 5px;
@@ -16,15 +16,16 @@
     text-align: center;
 }
 
-.content {
-    margin-top: -3em;
-}
-
 .avatar {
     border-radius: 50%;
-    margin-bottom: 1em;
     max-width: 5em;
     transform: translateY(-3.5em);
+}
+
+.content {
+    margin-top: -2em;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .header {
@@ -51,22 +52,6 @@
     justify-content: center;
 }
 
-.buttons a {
-    border: solid 1px green;
-    border-radius: 5px;
-    color: green;
-    font-size: 0.8em;
-    padding: 0.75em 3em;
-    max-width: 25em;
-    text-transform: uppercase;
-}
-
-.buttons .buttonGreen {
-    background-color: green;
-    color: white;
-    margin-right: 2em;
-}
-
 .gift {
     background-color: pink;
     outline: solid 1px rgba(128,0,128, 40%);
@@ -80,25 +65,15 @@
     transform: translateY(2em) rotate(-5deg);
 }
 
-@media (max-width: 500px) {
-    .buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .buttons .buttonGreen {
-        margin-right: 0;
-    }
-}
 
 /* Tablet / Desktop */
 @media (min-width: 920px) {
-    .main {
+    .wrapper {
         display: block;
         margin-top: 0;
     }
 
-    .center {
+    .card {
         display: flex;
         max-width: 1200px;
         margin: 0 auto;
@@ -107,25 +82,20 @@
         text-align: left;
     }
 
-    .content {
-        display: flex;
-        align-items: flex-start;
-        flex-direction: column;
-        margin-top: 0;
-        padding: 2em;
-    }
-
     .avatar {
         border-radius: 5px;
         grid-row-end: span 12;
         justify-self: end;
-        margin-bottom: 0;
         max-width: 25em;
         transform: none;
     }
 
     .header {
         margin-top: 2em;
+    }
+
+    .content {
+        margin-top: 0;
     }
 
     .buttons {
@@ -138,5 +108,12 @@
         right: -10px;
         top: -5px;
         transform: rotate(5deg);
+    }
+}
+
+@media (max-width: 500px) {
+    .buttons {
+        flex-direction: column;
+        align-items: center;
     }
 }
